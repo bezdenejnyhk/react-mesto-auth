@@ -1,0 +1,27 @@
+.profile__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: flex-start;
+    align-items: baseline;
+    grid-template-areas:
+    "name edit-button"
+    "about about";
+    width: 100%;
+}
+
+@media screen and (max-width: 930px) {
+    .profile__info {
+        grid-template-columns: repeat(1fr, auto-fill);
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .profile__info {
+        justify-content: center;
+        max-width: 282px;
+        grid-template-columns: 189px 20px;
+        grid-column-gap: 10px;
+        margin-left: 0;
+        justify-items: center;
+    }
+}

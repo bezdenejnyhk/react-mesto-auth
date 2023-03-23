@@ -1,0 +1,17 @@
+.item__like {
+    background-image: url(../../../images/Vector-Vector.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color:transparent;
+    width: 22px;
+    height: 19px;
+    border: none;
+    transition: 0.2s ease;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+}
+
+.item__like:hover {
+    opacity: 0.5;
+}
