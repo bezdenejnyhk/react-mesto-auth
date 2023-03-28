@@ -1,7 +1,17 @@
 import React from "react";
 
 const Login = ({ onLogin }) => {
-    const { enteredValues, handleChange } = React.useForm({});
+    const [enteredValues, setEnteredValues] = React.useState({});
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+
+        setEnteredValues({
+            ...enteredValues,
+            [name]: value,
+        });
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();

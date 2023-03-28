@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Navigate, useNavigate, Router } from 'react-router-dom';
+import { Route, Navigate, useNavigate, Router, Routes } from 'react-router-dom';
 import Header from "./Header.js";
 import Main from "./Main.js";
 import Footer from "./Footer.js";
@@ -211,7 +211,7 @@ function App() {
                     userEmail={authorizationEmail}
                     onSignOut={handleSignOut}
                 />
-                <Router>
+                <Routes>
                     <Route path="/sign-in" element={<Login onLogin={handleAuthorization} />} />
                     <Route path="/sign-up" element={<Register onRegister={handleRegistration} />} />
                     <Route path="/main"
@@ -229,7 +229,7 @@ function App() {
                             />
                         }
                     />
-                </Router>
+                </Routes>
                 <Footer />
                 <EditAvatarPopup
                     isOpen={isEditAvatarPopupOpen}
