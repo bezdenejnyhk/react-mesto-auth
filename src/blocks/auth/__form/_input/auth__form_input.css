@@ -1,0 +1,19 @@
+.auth__form_input {
+    display: block;
+    width: 358px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #cccccc;
+    margin: 0;
+    padding: 0 0 13px;
+    color: #ccc;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+  
+.auth__form_input:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(60, 97, 219);
+}
