@@ -1,5 +1,8 @@
 .header__menu {
-  grid-area: menu;
-  box-sizing: border-box;
+  max-height: 22px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
 }
-

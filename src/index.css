@@ -5,12 +5,9 @@
 
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
-@import url(./blocks/header/__menu-button/header__menu-buttton.css);
-@import url(./blocks/header/__menu-button/_opened/header__menu-button_opened.css);
 @import url(./blocks/header/__menu-item/header__menu-item.css);
-@import url(./blocks/header/__menu-list/header__menu-list.css);
 @import url(./blocks/header/__menu/header__menu.css);
-@import url(./blocks/header/__menu/_opened/header__menu_opened.css);
+
 
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__add/profile__add.css);

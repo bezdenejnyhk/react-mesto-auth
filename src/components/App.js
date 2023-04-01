@@ -162,36 +162,80 @@ function App() {
         setIsLoggedIn(false);
     }
 
+    function handleRegister(inputs) {
+        if (!inputs.email || !inputs.password) {
+            return;
+        }
+        auth
+            .register(inputs)
+            .then((res) => {
+                handleShowInfoMessage({
+                    text: "Вы успешно зарегистрировались!",
+                    isSuccess: true,
+                });
+                navigate("/sign-in");
+            })
+            .catch((err) => {
+                const text = err.message || "Что-то пошло не так! Попробуйте еще раз.";
+                handleShowInfoMessage({
+                    text: text,
+                    isSuccess: false,
+                });
+            });
+    }
+
+    function handleLogin(inputs) {
+        if (!inputs.email || !inputs.password) {
+            return;
+        }
+        auth
+            .authorize(inputs)
+            .then(res => {
+                if (res.token) localStorage.setItem('token', res.token);
+                setEmail(inputs.email);
+                setIsLoggedIn(true);
+                navigate("/");
+            })
+            .catch((err) => {
+                const text = err.message || "Что-то пошло не так! Попробуйте еще раз.";
+                handleShowInfoMessage({
+                    text: text,
+                    isSuccess: false,
+                });
+            });
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
                 <Routes>
                     <Route path="/"
                         element={
-                    <ProtectedRoute 
-                            element={Main}
-                            loggedIn={isLoggedIn}
-                            onEditProfile={handleEditProfileClick}
-                            onAddPlace={handleAddPlaceClick}
-                            onEditAvatar={handleEditAvatarClick}
-                            onCardClick={handleCardClick}
-                            cards={cards}
-                            onCardLike={handleCardLike}
-                            onCardDeleteClick={handlePopupWithConfirmation}
-                            email={email}
-                            onLogout={handleLogout}
-                        />
-                    
-                    }
+                            <ProtectedRoute
+                                element={Main}
+                                loggedIn={isLoggedIn}
+                                onEditProfile={handleEditProfileClick}
+                                onAddPlace={handleAddPlaceClick}
+                                onEditAvatar={handleEditAvatarClick}
+                                onCardClick={handleCardClick}
+                                cards={cards}
+                                onCardLike={handleCardLike}
+                                onCardDeleteClick={handlePopupWithConfirmation}
+                                email={email}
+                                onLogout={handleLogout}
+                            />
+
+                        }
                     />
-                    <Route path="/sign-up" element={<Register handleShowInfoMessage={handleShowInfoMessage} />} />
+                    <Route path="/sign-up" element={<Register onRegister={handleRegister} />} />
                     <Route path="/sign-in" element={
                         <Login
                             handleShowInfoMessage={handleShowInfoMessage}
                             onLogin={handleLogin}
+                            setEmail={setEmail}
                         />}
                     />
-                    <Route Route path="*" element={ <Navigate to="/" />} />
+                    <Route Route path="*" element={<Navigate to="/" />} />
                 </Routes>
                 <Footer />
                 <EditAvatarPopup

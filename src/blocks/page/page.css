@@ -3,4 +3,5 @@
     margin-left: auto;
     margin-right: auto;
     font-family: 'Inter', sans-serif;
+    min-height: 100vh;
 }
