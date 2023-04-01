@@ -39,7 +39,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateUser }) => {
                     type="text"
                     placeholder="Название"
                     className="popup__input popup__input_type_title"
-                    id="popup__input_type_title"
+                    id="popup__input_type_name"
                     name="name"
                     minLength={2}
                     maxLength={30}
@@ -53,7 +53,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateUser }) => {
                     type="text"
                     placeholder="Описание"
                     className="popup__input popup__input_type_link"
-                    id="popup__input_type_link"
+                    id="popup__input_type_about"
                     name="about"
                     required
                     value={about || ""}

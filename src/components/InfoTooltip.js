@@ -1,24 +1,16 @@
-import successIcon from '../images/success-icon.svg';
-import unsuccessIcon from '../images/unsuccess-icon.svg';
 
-const InfoTooltip = ({ isOpen, onClose, isSuccess }) => {
+const InfoTooltip = ({ message, onClose }) => {
 
   return (
-    <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
-      <div className="popup__container">
-        <button type="button" className="popup__close" onClick={onClose} />
-        <img
-          src={isSuccess ? successIcon : unsuccessIcon}
-          alt={
-            isSuccess ? 'Регистрация прошла успешно' : 'Регистрация не прошла'
-          }
-          className="popup__signup-icon"
-        />
-        <h3 className="popup__signup-title">
-          {isSuccess
-            ? 'Вы успешно зарегистрировались!'
-            : 'Что-то пошло не так! Попробуйте ещё раз.'}
-        </h3>
+    <div className={`popup` + (message ? " popup_opened" : "")} >
+      <div className="popup__container popup__container_infoTooltip">
+        <button type="button" className="popup__close" onClick={onClose} ></button>
+        <p
+          className={"popup__info-message" + (message ? message.isSuccess
+            ? " popup__info-message_success" : " popup__info-message_unsuccess" : "")}
+        >
+          {message ? message.text : " "}
+        </p>
       </div>
     </div>
   );

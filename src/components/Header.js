@@ -1,29 +1,41 @@
 import React from "react";
-import { Link, useLocation } from 'react-router-dom';
 import vector from '../images/vector_mesto.png';
 
-const Header = ({ userEmail, loggedIn, onSignOut }) => {
-  const location = useLocation();
+const Header = ({ children, isWrappable }) => {
+  const [isMenuOpened, setIsMenuOpened] = React.useState(false);
+
+  function handleOpenMenu() {
+    setIsMenuOpened((state) => !state);
+  }
 
   return (
     <header className="header">
       <img className="header__logo" src={vector} alt="Vector" />
-      {location.pathname === '/sign-in' && (
-        <Link to="/sign-up" className="header__link">
-          Регистрация
-        </Link>
+      {isWrappable && (
+        <button
+          type="button"
+          className={
+            "header__menu-button" +
+            (isMenuOpened ? " header__menu-button_opened" : "")
+          }
+          aria-label="Открыть меню"
+          onClick={handleOpenMenu}
+        ></button>
       )}
-      {location.pathname === '/sign-up' && (
-        <Link to="/sign-in" className="header__link">
-          Войти
-        </Link>
-      )}
-      {loggedIn && (
-        <nav className="header__nav">
-          <span>{userEmail}</span>
-          <button className="header__button" onClick={() => onSignOut()}>
-            Выйти
-          </button>
+
+      {children && (
+        <nav
+          className={
+            "header__menu" + (isMenuOpened ? " header__menu_opened" : "")
+          }
+        >
+          <ul className="header__menu-list">
+            {(children.length > 1 ? children : [children]).map((item, pos) => (
+              <li className="header__menu-item" key={pos}>
+                {item}
+              </li>
+            ))}
+          </ul>
         </nav>
       )}
     </header>

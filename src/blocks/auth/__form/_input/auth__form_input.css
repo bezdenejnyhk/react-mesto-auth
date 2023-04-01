@@ -4,7 +4,7 @@
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #cccccc;
-    margin: 0;
+    margin-bottom: 30px;
     padding: 0 0 13px;
     color: #ccc;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
@@ -12,7 +12,11 @@
     font-size: 14px;
     line-height: 17px;
 }
-  
+
+.auth__form_input:last-of-type {
+    margin-bottom: 0;
+}
+
 .auth__form_input:focus {
     outline: none;
     border-bottom: 2px solid rgb(60, 97, 219);
