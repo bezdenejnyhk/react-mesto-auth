@@ -1,5 +1,6 @@
 .popup__info-message {
-    margin: 26px 0 23px;
+    max-width: 358px;
+    margin: 26px 36px 23px;
     padding-top: 152px;
     font-family: "Inter", sans-serif;
     font-style: normal;

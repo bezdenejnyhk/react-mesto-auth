@@ -4,6 +4,9 @@
     margin: 0 auto 40px;
     padding-top: 45px;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 @media screen and (max-width: 900px) {

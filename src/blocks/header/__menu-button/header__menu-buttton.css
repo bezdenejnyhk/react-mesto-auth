@@ -13,12 +13,6 @@
   grid-area: button;
 }
 
-@media (max-width: 768px) {
-  .header__menu-button {
-    margin-right: 30px;
-    display: block;
-  }
-}
 
 .header__menu-button:hover {
   opacity: 0.6;

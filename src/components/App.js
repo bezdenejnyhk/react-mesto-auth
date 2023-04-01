@@ -31,14 +31,14 @@ function App() {
 
     React.useEffect(() => {
         isLoggedIn &&
-        Promise.all([api.getUserInfo(), api.getInitialCards(cards)])
-            .then(([userData, initialCards]) => {
-                setCurrentUser(userData);
-                setCards(initialCards);
-            })
-            .catch((err) => {
-                console.log(`Ошибка: ${err}`);
-            });
+            Promise.all([api.getUserInfo(), api.getInitialCards(cards)])
+                .then(([userData, initialCards]) => {
+                    setCurrentUser(userData);
+                    setCards(initialCards);
+                })
+                .catch((err) => {
+                    console.log(`Ошибка: ${err}`);
+                });
     }, [isLoggedIn]);
 
     const handleEditAvatarClick = () => {
@@ -146,7 +146,6 @@ function App() {
                 .checkToken(token)
                 .then((res) => {
                     setIsLoggedIn(true);
-                    console.log(isLoggedIn); // false
                     navigate("/");
                     setEmail(res.data.email);
                 })
@@ -156,7 +155,6 @@ function App() {
 
     function handleLogin() {
         setIsLoggedIn(true);
-        console.log(isLoggedIn); //true
     }
 
     function handleLogout() {
@@ -168,8 +166,11 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
                 <Routes>
-                    <Route path="/" element={<ProtectedRoute loggedIn={isLoggedIn}>
-                        <Main
+                    <Route path="/"
+                        element={
+                    <ProtectedRoute 
+                            element={Main}
+                            loggedIn={isLoggedIn}
                             onEditProfile={handleEditProfileClick}
                             onAddPlace={handleAddPlaceClick}
                             onEditAvatar={handleEditAvatarClick}
@@ -180,7 +181,7 @@ function App() {
                             email={email}
                             onLogout={handleLogout}
                         />
-                    </ProtectedRoute>
+                    
                     }
                     />
                     <Route path="/sign-up" element={<Register handleShowInfoMessage={handleShowInfoMessage} />} />
